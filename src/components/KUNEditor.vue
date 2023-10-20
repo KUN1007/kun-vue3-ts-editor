@@ -39,6 +39,7 @@ onMounted(() => {
 })
 
 // get kunditor rich text
+// dangerous! xss TODO:
 const getRichText = () => {
   if (kunditor.value) {
     return kunditor.value.innerHTML
@@ -57,12 +58,20 @@ const getPlainText = () => {
 // on paste
 const handleKunditorPaste = (event: ClipboardEvent) => {
   const clipboardData = event.clipboardData
+  console.log(clipboardData?.files)
+
   if (clipboardData && clipboardData.items) {
     const item = clipboardData.items[0]
     if (item.type.indexOf('image') !== -1) {
-      // 用户粘贴了图片，处理上传逻辑
-      alert(1)
-      return
+      // prevent user upload image
+      event.preventDefault()
+      alert('NOPE')
+
+      const image = item.getAsFile()
+      if (image) {
+        // TODO: upload image
+        console.log(image)
+      }
     }
   }
 }
