@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+import KUNToolbar from './KUNToolbar.vue'
 
 // kunditor ref
 const kunditor = ref<HTMLElement | null>(null)
@@ -58,6 +59,8 @@ const getPlainText = () => {
 
 <template>
   <div class="kun-container">
+    <KUNToolbar />
+
     <div
       tabindex="0"
       ref="kunditor"
