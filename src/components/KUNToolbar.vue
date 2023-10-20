@@ -62,11 +62,13 @@ import { Icon } from '@iconify/vue'
 .kun-toolbar {
   background-color: var(--kungalgame-trans-blue-0);
   border-bottom: 1px solid var(--kungalgame-blue-4);
+  color: var(--kungalgame-font-color-2);
   width: 100%;
 }
 
 .btn {
   display: flex;
+  align-items: center;
   flex-wrap: wrap;
   padding: 5px;
 
@@ -74,8 +76,28 @@ import { Icon } from '@iconify/vue'
     display: flex;
 
     span {
+      display: flex;
       margin-left: 5px;
       padding: 2px 7px;
+      font-size: 22px;
+      border: 1px solid var(--kungalgame-trans-white-9);
+      border-radius: 3px;
+      transition: all 0.2s;
+
+      &:hover {
+        color: var(--kungalgame-blue-4);
+        border: 1px solid var(--kungalgame-blue-4);
+      }
+
+      &:active {
+        transform: scale(0.9);
+      }
+    }
+
+    &:nth-child(1) {
+      span {
+        font-size: 25px;
+      }
     }
   }
 }

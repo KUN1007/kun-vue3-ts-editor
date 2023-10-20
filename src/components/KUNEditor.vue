@@ -25,8 +25,6 @@ const handleKunditorFocus = () => {
 
 // on kunditor blur
 const handleKunditorBlur = () => {
-  console.log(getPlainText())
-
   if (kunditor.value && !getPlainText().trim()) {
     kunPlaceholder.value = 'Input text here...'
   }
@@ -55,6 +53,26 @@ const getPlainText = () => {
   }
   return ''
 }
+
+// on paste
+const handleKunditorPaste = (event: ClipboardEvent) => {
+  const clipboardData = event.clipboardData
+  if (clipboardData && clipboardData.items) {
+    const item = clipboardData.items[0]
+    if (item.type.indexOf('image') !== -1) {
+      // 用户粘贴了图片，处理上传逻辑
+      alert(1)
+      return
+    }
+  }
+}
+
+// insert image to kunditor
+const insertImage = (imageUrl: string) => {
+  const imgElement = document.createElement('img')
+  imgElement.src = imageUrl
+  kunditor.value?.appendChild(imgElement)
+}
 </script>
 
 <template>
@@ -69,6 +87,7 @@ const getPlainText = () => {
       @click="startEditing"
       @focus="handleKunditorFocus"
       @blur="handleKunditorBlur"
+      @paste="handleKunditorPaste"
     >
       <p class="kun-placeholder">{{ kunPlaceholder }}</p>
     </div>
