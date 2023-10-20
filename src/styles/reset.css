@@ -1,0 +1,36 @@
+/* --------------------------------------------------------------
+   reset.css
+   * Resets default browser CSS.
+-------------------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+:focus {
+  outline: none;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* 兼容火狐浏览器不显示滚动条 */
+* {
+  scrollbar-width: none; /* Firefox 64+ */
+}
+
+/* button, input, select, textarea 元素默认不会继承字体，字体设置会出问题 */
+button,
+select {
+  font-family: inherit;
+}
+
+/* 鼠标选中文字的颜色 */
+*::selection {
+  background-color: var(--kungalgame-blue-1); /* 选中文本的背景颜色 */
+  color: var(--kungalgame-blue-4); /* 选中文本的文本颜色 */
+}
